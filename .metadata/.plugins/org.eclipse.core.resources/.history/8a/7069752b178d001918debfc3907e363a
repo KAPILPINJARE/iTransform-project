@@ -1,0 +1,9 @@
+package com.capgemini.itransform.courseservice.dao;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.capgemini.itransform.courseservice.entity.Course;
+
+public interface CourseDao extends MongoRepository<Course, Integer> {
+
+}

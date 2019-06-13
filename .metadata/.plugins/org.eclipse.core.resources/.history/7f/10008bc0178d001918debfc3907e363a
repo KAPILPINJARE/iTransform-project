@@ -1,0 +1,5 @@
+package com.capgemini.itransform.courseservice.controller;
+
+public class CourseController {
+
+}

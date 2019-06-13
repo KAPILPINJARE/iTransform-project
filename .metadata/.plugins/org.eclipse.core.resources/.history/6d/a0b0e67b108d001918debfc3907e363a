@@ -1,0 +1,7 @@
+package com.capgemini.itransform.courseservice.entity;
+
+public class CourseChapter {
+	private int chapterId;
+	private String chapterName;
+	private ChapterModule chapterModule[];
+}

@@ -1,0 +1,5 @@
+package com.capgemini.itransform.courseservice.service;
+
+public class CourseServiceImpl {
+
+}

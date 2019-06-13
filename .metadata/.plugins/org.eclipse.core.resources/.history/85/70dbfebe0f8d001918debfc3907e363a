@@ -1,0 +1,5 @@
+package com.capgemini.itransform.courseservice.entity;
+
+public class ChapterModule {
+
+}

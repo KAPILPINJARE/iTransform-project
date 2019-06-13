@@ -1,0 +1,40 @@
+package com.capgemini.itransform.userservice.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.capgemini.itransform.userservice.entity.Course;
+import com.capgemini.itransform.userservice.entity.CourseList;
+import com.capgemini.itransform.userservice.entity.User;
+import com.capgemini.itransform.userservice.service.UserService;
+
+@RestController
+public class UserController {
+
+	private String baseUrl="http://localhost:8083/course";
+	@Autowired
+	UserService service;
+	
+	@Autowired
+	RestTemplate restTemplate;
+	
+	@PostMapping("/user")
+	public ResponseEntity<User> addNewUser(@RequestBody User user) {
+		User user1 = service.addNewUser(user);
+		CourseList course = restTemplate.getForEntity(baseUrl, CourseList.class).getBody();
+		user1.setCourse(course.getCourse());
+		return new ResponseEntity<User>(user1, HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/user/{{userName}}")
+	public ResponseEntity<User> getUserByUserName(@PathVariable String userName){
+		return new ResponseEntity<User>(service.getUserByUserName(userName), HttpStatus.OK);
+	}
+}

@@ -1,0 +1,8 @@
+package com.capgemini.itransform.courseservice.entity;
+
+
+public class Course {
+	private int courseId;
+	private String courseName;
+	
+}
